@@ -57,6 +57,14 @@
     toolbar.className = 'toolbar';
     document.body.appendChild(toolbar);
 
+    var bangLink = document.createElement('a');
+    bangLink.href = 'https://bang-labs.eu';
+    bangLink.className = 'bang-labs';
+    bangLink.target = '_blank';
+    bangLink.rel = 'noopener';
+    bangLink.textContent = 'Bang Labs';
+    toolbar.appendChild(bangLink);
+
     var page = document.body.getAttribute('data-page');
 
     if (page && page !== 'index') {
