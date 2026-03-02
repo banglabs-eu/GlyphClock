@@ -67,17 +67,18 @@
 
     var page = document.body.getAttribute('data-page');
 
+    var toolbar = document.createElement('div');
+    toolbar.className = 'toolbar';
+    document.body.appendChild(toolbar);
+
     if (page && page !== 'index') {
         var homeLink = document.createElement('a');
         homeLink.href = 'index.html';
         homeLink.className = 'toolbar-btn';
-        homeLink.textContent = 'Home';
-        toolbarLeft.appendChild(homeLink);
+        homeLink.setAttribute('aria-label', 'Home');
+        homeLink.textContent = '\uD83C\uDFE0';
+        toolbar.appendChild(homeLink);
     }
-
-    var toolbar = document.createElement('div');
-    toolbar.className = 'toolbar';
-    document.body.appendChild(toolbar);
 
     var darkBtn = document.createElement('button');
     darkBtn.className = 'toolbar-btn dark-toggle';
