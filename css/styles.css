@@ -40,14 +40,22 @@ a {
 }
 
 /* Toolbar */
-.toolbar {
+.toolbar,
+.toolbar-left {
   position: fixed;
   top: 1rem;
-  right: 1rem;
   z-index: 100;
   display: flex;
   gap: 0.5rem;
   align-items: flex-start;
+}
+
+.toolbar {
+  right: 1rem;
+}
+
+.toolbar-left {
+  left: 1rem;
 }
 
 .toolbar-btn {

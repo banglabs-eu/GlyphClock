@@ -53,9 +53,9 @@
 
     // Toolbar
 
-    var toolbar = document.createElement('div');
-    toolbar.className = 'toolbar';
-    document.body.appendChild(toolbar);
+    var toolbarLeft = document.createElement('div');
+    toolbarLeft.className = 'toolbar-left';
+    document.body.appendChild(toolbarLeft);
 
     var bangLink = document.createElement('a');
     bangLink.href = 'https://bang-labs.eu';
@@ -63,9 +63,21 @@
     bangLink.target = '_blank';
     bangLink.rel = 'noopener';
     bangLink.textContent = 'Bang Labs';
-    toolbar.appendChild(bangLink);
+    toolbarLeft.appendChild(bangLink);
 
     var page = document.body.getAttribute('data-page');
+
+    if (page && page !== 'index') {
+        var homeLink = document.createElement('a');
+        homeLink.href = 'index.html';
+        homeLink.className = 'toolbar-btn';
+        homeLink.textContent = 'Home';
+        toolbarLeft.appendChild(homeLink);
+    }
+
+    var toolbar = document.createElement('div');
+    toolbar.className = 'toolbar';
+    document.body.appendChild(toolbar);
 
     var darkBtn = document.createElement('button');
     darkBtn.className = 'toolbar-btn dark-toggle';
