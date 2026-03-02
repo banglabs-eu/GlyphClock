@@ -1,0 +1,141 @@
+h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+
+p {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+
+h2 {
+  font-size: 200px;
+  text-align: center;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+body {
+  background-color: whitesmoke;
+  color: #222;
+  transition: background-color 0.3s, color 0.3s, opacity 0.3s ease;
+  animation: fadeIn 0.3s ease;
+}
+
+body.navigating {
+  opacity: 0;
+}
+
+a {
+  color: inherit;
+}
+
+.dark,
+.dark body {
+  background-color: #1a1a2e;
+  color: #e0e0e0;
+}
+
+/* Toolbar */
+.toolbar {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 100;
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.toolbar-btn {
+  background: rgba(245, 245, 245, 0.9);
+  border: 1px solid rgba(150, 150, 150, 0.4);
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  color: #555;
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.toolbar-btn:hover {
+  background: rgba(220, 220, 220, 0.9);
+  border-color: rgba(100, 100, 100, 0.6);
+}
+
+.dark .toolbar-btn {
+  background: rgba(30, 30, 50, 0.9);
+  border-color: rgba(100, 100, 140, 0.4);
+  color: #ccc;
+}
+
+.dark .toolbar-btn:hover {
+  background: rgba(50, 50, 80, 0.9);
+  border-color: rgba(120, 120, 160, 0.6);
+}
+
+/* Language switcher dropdown */
+.lang-switcher {
+  position: relative;
+}
+
+.lang-switcher__list {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(150, 150, 150, 0.4);
+  border-radius: 8px;
+  max-height: 300px;
+  overflow-y: auto;
+  min-width: 160px;
+}
+
+.lang-switcher__option {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  background: none;
+  border: none;
+  color: #666;
+  font-size: 0.85rem;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.lang-switcher__option:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: #333;
+}
+
+.lang-switcher__option--active {
+  color: #111;
+  font-weight: 600;
+}
+
+.dark .lang-switcher__list {
+  background: rgba(25, 25, 45, 0.95);
+  border-color: rgba(100, 100, 140, 0.4);
+}
+
+.dark .lang-switcher__option {
+  color: #999;
+}
+
+.dark .lang-switcher__option:hover {
+  background: rgba(80, 80, 120, 0.15);
+  color: #ddd;
+}
+
+.dark .lang-switcher__option--active {
+  color: #eee;
+}
