@@ -1,0 +1,33 @@
+name: GlyphClock
+options:
+  bundleIdPrefix: eu.bang-labs.glyphclock
+  deploymentTarget:
+    watchOS: "10.0"
+  xcodeVersion: "15.0"
+
+targets:
+  GlyphClock Watch App:
+    type: application
+    platform: watchOS
+    sources:
+      - path: GlyphClock Watch App
+      - path: GlyphClock Widget/GlyphClockModel.swift
+    settings:
+      INFOPLIST_KEY_WKCompanionAppBundleIdentifier: ""
+      INFOPLIST_KEY_CFBundleDisplayName: GlyphClock
+      GENERATE_INFOPLIST_FILE: true
+      SWIFT_VERSION: "5.9"
+      PRODUCT_BUNDLE_IDENTIFIER: eu.bang-labs.glyphclock.watchapp
+    dependencies:
+      - target: GlyphClock WidgetExtension
+
+  GlyphClock WidgetExtension:
+    type: widget-extension
+    platform: watchOS
+    sources:
+      - path: GlyphClock Widget
+    settings:
+      INFOPLIST_KEY_CFBundleDisplayName: GlyphClock Widget
+      GENERATE_INFOPLIST_FILE: true
+      SWIFT_VERSION: "5.9"
+      PRODUCT_BUNDLE_IDENTIFIER: eu.bang-labs.glyphclock.watchapp.widget
