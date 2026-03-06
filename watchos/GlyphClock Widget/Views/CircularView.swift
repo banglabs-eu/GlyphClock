@@ -1,7 +1,32 @@
 import SwiftUI
 import WidgetKit
 
-struct CircularView: View {
+struct CircularGlyphView: View {
+    let glyph: GlyphClockModel
+
+    var body: some View {
+        ZStack {
+            AccessoryWidgetBackground()
+            Text(glyph.emoji)
+                .font(.system(size: 28))
+        }
+    }
+}
+
+struct CircularLinesView: View {
+    let glyph: GlyphClockModel
+
+    var body: some View {
+        ZStack {
+            AccessoryWidgetBackground()
+            Text(glyph.sub)
+                .font(.system(size: 28))
+                .widgetAccentable()
+        }
+    }
+}
+
+struct CircularBothView: View {
     let glyph: GlyphClockModel
 
     var body: some View {

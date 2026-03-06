@@ -2,46 +2,52 @@ import SwiftUI
 import WidgetKit
 
 @main
-struct GlyphClockWidget: Widget {
-    let kind = "GlyphClockWidget"
+struct GlyphClockWidgetBundle: WidgetBundle {
+    var body: some Widget {
+        GlyphClockGlyphWidget()
+        GlyphClockLinesWidget()
+        GlyphClockBothWidget()
+    }
+}
+
+struct GlyphClockGlyphWidget: Widget {
+    let kind = "GlyphClockGlyph"
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: GlyphClockTimelineProvider()) { entry in
-            GlyphClockEntryView(entry: entry)
+            CircularGlyphView(glyph: entry.glyph)
+                .containerBackground(.clear, for: .widget)
         }
-        .configurationDisplayName("GlyphClock")
-        .description("Shows the current GlyphClock symbol.")
-        .supportedFamilies([
-            .accessoryCircular,
-            .accessoryRectangular,
-            .accessoryInline,
-            .accessoryCorner
-        ])
+        .configurationDisplayName("Glyph")
+        .description("Shows the current glyph.")
+        .supportedFamilies([.accessoryCircular])
     }
 }
 
-struct GlyphClockEntryView: View {
-    @Environment(\.widgetFamily) var family
-    let entry: GlyphClockEntry
+struct GlyphClockLinesWidget: Widget {
+    let kind = "GlyphClockLines"
 
-    var body: some View {
-        switch family {
-        case .accessoryCircular:
-            CircularView(glyph: entry.glyph)
-        case .accessoryRectangular:
-            RectangularView(glyph: entry.glyph)
-        case .accessoryInline:
-            InlineView(glyph: entry.glyph)
-        case .accessoryCorner:
-            CornerView(glyph: entry.glyph)
-        default:
-            Text(entry.glyph.combined)
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: kind, provider: GlyphClockTimelineProvider()) { entry in
+            CircularLinesView(glyph: entry.glyph)
+                .containerBackground(.clear, for: .widget)
         }
+        .configurationDisplayName("Lines")
+        .description("Shows the current sub-period.")
+        .supportedFamilies([.accessoryCircular])
     }
 }
 
-#Preview(as: .accessoryCircular) {
-    GlyphClockWidget()
-} timeline: {
-    GlyphClockEntry(date: .now, glyph: .glyph(for: .now))
+struct GlyphClockBothWidget: Widget {
+    let kind = "GlyphClockBoth"
+
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: kind, provider: GlyphClockTimelineProvider()) { entry in
+            CircularBothView(glyph: entry.glyph)
+                .containerBackground(.clear, for: .widget)
+        }
+        .configurationDisplayName("Glyph + Lines")
+        .description("Shows the current glyph and sub-period.")
+        .supportedFamilies([.accessoryCircular])
+    }
 }
