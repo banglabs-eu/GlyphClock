@@ -15,16 +15,52 @@ h2 {
 
 #currentTime {
   height: 260px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  position: relative;
   margin: 0;
 }
 
-#currentTime.glyph-1 { font-size: 200px; }
-#currentTime.glyph-2 { font-size: 120px; }
-#currentTime.glyph-3 { font-size: 85px; line-height: 1.1; }
+.glyph-item {
+  position: absolute;
+  font-size: 200px;
+  line-height: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.5s ease;
+}
+
+/* 1 glyph: centered, full size */
+.glyph-1 .glyph-item:nth-child(1) {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+/* 2 glyphs: side by side */
+.glyph-2 .glyph-item:nth-child(1) {
+  transform: translate(calc(-50% - 65px), -50%) scale(0.6);
+  opacity: 1;
+}
+.glyph-2 .glyph-item:nth-child(2) {
+  transform: translate(calc(-50% + 65px), -50%) scale(0.6);
+  opacity: 1;
+}
+
+/* 3 glyphs: triangle — 1 top, 2 bottom */
+.glyph-3 .glyph-item:nth-child(1) {
+  transform: translate(-50%, calc(-50% - 50px)) scale(0.425);
+  opacity: 1;
+}
+.glyph-3 .glyph-item:nth-child(2) {
+  transform: translate(calc(-50% - 50px), calc(-50% + 40px)) scale(0.425);
+  opacity: 1;
+}
+.glyph-3 .glyph-item:nth-child(3) {
+  transform: translate(calc(-50% + 50px), calc(-50% + 40px)) scale(0.425);
+  opacity: 1;
+}
 
 /* Test mode controls */
 .test-controls {

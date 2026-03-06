@@ -24,22 +24,33 @@
         return { glyph: SYMBOLS[block], count: sub + 1 };
     }
 
+    function ensureGlyphSpans(el) {
+        if (el.querySelectorAll('.glyph-item').length === 0) {
+            for (var i = 0; i < 3; i++) {
+                var span = document.createElement('span');
+                span.className = 'glyph-item';
+                el.appendChild(span);
+            }
+        }
+    }
+
     function renderPhase(phase) {
         var info = getDisplayForPhase(phase);
-        var text = '';
-        for (var i = 0; i < info.count; i++) text += info.glyph;
-
         var el = document.getElementById('currentTime');
         var titleEl = document.getElementById('currentTimeTitle');
         if (el) {
-            el.className = 'glyph-' + info.count;
-            if (info.count === 3) {
-                el.innerHTML = info.glyph + '<br>' + info.glyph + info.glyph;
-            } else {
-                el.textContent = text;
+            ensureGlyphSpans(el);
+            var spans = el.querySelectorAll('.glyph-item');
+            for (var i = 0; i < 3; i++) {
+                spans[i].textContent = info.glyph;
             }
+            el.className = 'glyph-' + info.count;
         }
-        if (titleEl) titleEl.textContent = text;
+        if (titleEl) {
+            var text = '';
+            for (var i = 0; i < info.count; i++) text += info.glyph;
+            titleEl.textContent = text;
+        }
     }
 
     function updateValues() {
