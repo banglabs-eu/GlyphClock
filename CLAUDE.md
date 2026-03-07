@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-GlyphClock is a static web app that displays a custom timezone-free time system. The 24-hour day (1440 minutes from UTC midnight) is divided into 16 blocks of 90 minutes, each with a unique emoji. Each block has 3 sub-periods of 30 minutes labeled with Chinese numerals (一, 二, 三).
+GlyphClock is a static web app that displays a custom timezone-free time system. The 24-hour day (1440 minutes from UTC midnight) is divided into 16 blocks of 90 minutes, each with a unique emoji. Each block has 3 sub-periods of 30 minutes, shown by displaying one, two, or three copies of the glyph.
 
 Emoji sequence: 🥐→🦋→🌷→☂️→🌵→🎈→👓→⚓→🦚→🤖→⭐→☁️→🌲→🪁→🪑→♻
 

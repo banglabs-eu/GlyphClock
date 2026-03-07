@@ -11,12 +11,23 @@
   <script>(function(){try{var p=new URLSearchParams(location.search).get('theme');if(p==='light'||p==='dark'){localStorage.setItem('darkMode',p==='dark');if(p==='dark')document.documentElement.classList.add('dark');return}var d=localStorage.getItem('darkMode');if(d==='true'||(d===null&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})()</script>
 </head>
 <body data-page="about">
-  <h1 data-i18n="title.about">About GlyphClock</h1>
-  <p data-i18n="about.p1">We all live in and share the same time. The clock is always ticking, GlyphClock was made with the intent to separate us from the constant count.</p>
-  <p data-i18n="about.p2">The 24-hour day is divided into 16, 90 minute blocks. Each block is then divided into 30 minute blocks of 一, 二 and 三.</p>
-  <p data-i18n="about.p3">There are no time zones in GlyphClock, as we travel the world we develop new relationships to the symbols. 🦋 may go from being the middle of the night to when we wake up. The <a href="glyphclock.html">🕰️</a> will show you the current GlyphClock.</p>
-  <p data-i18n="about.creator">Created by <a href="https://bang-labs.eu">Bang Labs</a>.</p>
-  <h2><a href="glyphclock.html">🕰️</a></h2>
+  <div class="about">
+    <h1 data-i18n="title.about">About GlyphClock</h1>
+
+    <p class="about-text" data-i18n="about.desc">GlyphClock is a timezone and language free time system. The 24-hour day is divided into 16 blocks of 90 minutes, each block with a unique emoji. Each 90 minute period has 3 sub-periods of 30 minutes, shown by displaying one, two, or three copies of the glyph.</p>
+
+    <div class="about-glyphs" aria-hidden="true">
+      <span>🥐</span><span>🦋</span><span>🌷</span><span>☂️</span><span>🌵</span><span>🎈</span><span>👓</span><span>⚓</span><span>🦚</span><span>🤖</span><span>⭐</span><span>☁️</span><span>🌲</span><span>🪁</span><span>🪑</span><span>♻</span>
+    </div>
+
+    <div class="about-phases" aria-hidden="true">
+      <span class="about-phase">🦋</span>
+      <span class="about-phase">🦋🦋</span>
+      <span class="about-phase">🦋🦋🦋</span>
+    </div>
+
+    <p class="about-creator" data-i18n="about.creator">Created by <a href="https://bang-labs.eu">Bang Labs</a>.</p>
+  </div>
   <script src="scripts.js"></script>
   <script src="i18n.js"></script>
 </body>

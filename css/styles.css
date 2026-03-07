@@ -377,7 +377,103 @@ a {
   color: #eee;
 }
 
+/* About page */
+.about {
+  max-width: 640px;
+  margin: 80px auto 60px;
+  padding: 0 24px;
+}
+
+.about h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: left;
+  margin-bottom: 2.5rem;
+}
+
+.about-text {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.75;
+  color: #444;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.dark .about-text {
+  color: #b0b0b0;
+}
+
+.about-text a {
+  text-decoration: none;
+  border-bottom: 1px solid rgba(100, 100, 100, 0.3);
+  transition: border-color 0.2s;
+}
+
+.about-text a:hover {
+  border-color: currentColor;
+}
+
+.about-glyphs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 14px;
+  margin: 2.5rem 0;
+  padding: 1.5rem 0;
+  font-size: 2rem;
+  border-top: 1px solid rgba(150, 150, 150, 0.2);
+  border-bottom: 1px solid rgba(150, 150, 150, 0.2);
+}
+
+.about-phases {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 2rem;
+  margin: 2.5rem 0;
+  padding: 1.5rem 0;
+  font-size: 2rem;
+  border-top: 1px solid rgba(150, 150, 150, 0.2);
+  border-bottom: 1px solid rgba(150, 150, 150, 0.2);
+}
+
+.about-phase {
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.about-phase:last-child {
+  opacity: 1;
+}
+
+.about-creator {
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 3rem;
+  font-size: 0.95rem;
+  color: #999;
+  text-align: left;
+}
+
+.about-creator a {
+  text-decoration: none;
+  border-bottom: 1px solid rgba(150, 150, 150, 0.3);
+  transition: border-color 0.2s;
+}
+
+.about-creator a:hover {
+  border-color: currentColor;
+}
+
+.dark .about-creator {
+  color: #666;
+}
+
 @media (max-width: 480px) {
   .nav-links { display: none; }
   .nav-inner { gap: 12px; }
+  .about { margin-top: 64px; }
+  .about h1 { font-size: 1.6rem; }
+  .about-phases { gap: 1rem; font-size: 1.5rem; }
 }
