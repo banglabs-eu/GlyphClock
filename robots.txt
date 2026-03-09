@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://glyphclock.bang-labs.eu/sitemap.xml

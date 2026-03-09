@@ -121,16 +121,37 @@ a {
 
 .content-layer {
   min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: min-height 0.8s ease;
 }
 
-/* Fade non-clock elements when clock-only */
+/* Clock-only mode: hide non-clock elements, center clock */
 .about > *:not(.about-clock) {
-  transition: opacity 0.8s ease;
+  transition: opacity 0.8s ease, max-height 0.8s ease, margin 0.8s ease, padding 0.8s ease;
+  max-height: 500px;
+  overflow: hidden;
+}
+
+.about {
+  transition: margin 0.8s ease, padding 0.8s ease;
 }
 
 body.clock-only .about > *:not(.about-clock) {
   opacity: 0;
+  max-height: 0;
+  margin: 0;
+  padding: 0;
   pointer-events: none;
+}
+
+body.clock-only .about {
+  margin: 0;
+}
+
+body.clock-only {
+  overflow: hidden;
 }
 
 /* Navigation */
@@ -330,6 +351,14 @@ body.clock-only .about > *:not(.about-clock) {
   margin-bottom: 2.5rem;
 }
 
+.privacy-heading {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-align: left;
+  margin-bottom: 0.5rem;
+}
+
 .about-text {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.1rem;
@@ -355,6 +384,93 @@ body.clock-only .about > *:not(.about-clock) {
 
 .about-clock {
   margin: 2.5rem 0;
+}
+
+/* Focus area */
+.focus-area {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.focus-add {
+  background: none;
+  border: none;
+  color: #999;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 0.3rem 0.6rem;
+  transition: color 0.2s;
+}
+
+.focus-add:hover {
+  color: #555;
+}
+
+.dark .focus-add:hover {
+  color: #ccc;
+}
+
+.focus-input {
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(150, 150, 150, 0.4);
+  color: inherit;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.95rem;
+  text-align: center;
+  padding: 0.4rem 0.5rem;
+  width: 260px;
+  max-width: 80vw;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.focus-input:focus {
+  border-bottom-color: #6366f1;
+}
+
+.focus-display {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.focus-text {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.95rem;
+  color: #666;
+  transition: opacity 0.8s ease;
+}
+
+.dark .focus-text {
+  color: #aaa;
+}
+
+.focus-clear {
+  background: none;
+  border: none;
+  color: #bbb;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0 0.3rem;
+  line-height: 1;
+  transition: color 0.2s, opacity 0.8s ease;
+}
+
+.focus-clear:hover {
+  color: #888;
+}
+
+/* Hide add button and clear button in clock-only, keep focus text */
+body.clock-only .focus-add {
+  opacity: 0;
+  pointer-events: none;
+}
+
+body.clock-only .focus-clear {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .about-glyphs {

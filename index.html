@@ -6,6 +6,15 @@
   <title>GlyphClock</title>
   <meta name="description" content="A timezone-free time system dividing the day into 16 symbolic blocks.">
   <meta name="author" content="Adam">
+  <link rel="canonical" href="https://glyphclock.bang-labs.eu/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://glyphclock.bang-labs.eu/">
+  <meta property="og:title" content="GlyphClock">
+  <meta property="og:description" content="A timezone-free time system dividing the day into 16 symbolic blocks.">
+  <meta property="og:site_name" content="GlyphClock">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="GlyphClock">
+  <meta name="twitter:description" content="A timezone-free time system dividing the day into 16 symbolic blocks.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="css/styles.css">
   <script>(function(){try{var p=new URLSearchParams(location.search).get('theme');if(p==='light'||p==='dark'){localStorage.setItem('darkMode',p==='dark');if(p==='dark')document.documentElement.classList.add('dark');return}var d=localStorage.getItem('darkMode');if(d==='true'||(d===null&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})()</script>
@@ -23,6 +32,14 @@
           <button id="testPrev" class="test-btn">◀</button>
           <span id="testInfo"></span>
           <button id="testNext" class="test-btn">▶</button>
+        </div>
+        <div class="focus-area">
+          <button class="focus-add" id="focusAdd" data-i18n="focus.add">+ add current focus</button>
+          <div class="focus-display" id="focusDisplay" style="display:none">
+            <span class="focus-text" id="focusText"></span>
+            <button class="focus-clear" id="focusClear">&times;</button>
+          </div>
+          <input type="text" class="focus-input" id="focusInput" placeholder="What are you focusing on?" data-i18n-placeholder="focus.placeholder" style="display:none">
         </div>
       </div>
 

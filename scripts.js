@@ -193,9 +193,8 @@
     if (hasContentLayer) {
         fadeTimer = setTimeout(fadeToClockOnly, 11000);
     }
-    document.addEventListener('mousemove', handleActivity);
+    document.addEventListener('click', handleActivity);
     document.addEventListener('touchstart', handleActivity);
-    document.addEventListener('scroll', handleActivity);
 
     document.addEventListener('DOMContentLoaded', function () {
         startTime();
@@ -218,6 +217,82 @@
             if (e.key === 'ArrowLeft') { testNavigate(-1); e.preventDefault(); }
             if (e.key === 'ArrowRight') { testNavigate(1); e.preventDefault(); }
             if (e.key === 'Escape') { exitTestMode(); e.preventDefault(); }
+        });
+
+        // Focus task
+        var focusAdd = document.getElementById('focusAdd');
+        var focusInput = document.getElementById('focusInput');
+        var focusDisplay = document.getElementById('focusDisplay');
+        var focusText = document.getElementById('focusText');
+        var focusClear = document.getElementById('focusClear');
+
+        function loadFocus() {
+            var saved = '';
+            try { saved = localStorage.getItem('glyphclock-focus') || ''; } catch (e) {}
+            if (saved) {
+                focusText.textContent = saved;
+                focusAdd.style.display = 'none';
+                focusDisplay.style.display = '';
+            }
+        }
+
+        loadFocus();
+
+        focusAdd.addEventListener('click', function (e) {
+            e.stopPropagation();
+            focusAdd.style.display = 'none';
+            focusInput.style.display = '';
+            focusInput.focus();
+        });
+
+        focusInput.addEventListener('click', function (e) {
+            e.stopPropagation();
+        });
+
+        focusInput.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                var val = focusInput.value.trim();
+                if (val) {
+                    focusText.textContent = val;
+                    try { localStorage.setItem('glyphclock-focus', val); } catch (err) {}
+                    focusInput.style.display = 'none';
+                    focusInput.value = '';
+                    focusDisplay.style.display = '';
+                } else {
+                    focusInput.style.display = 'none';
+                    focusAdd.style.display = '';
+                }
+                e.stopPropagation();
+            }
+            if (e.key === 'Escape') {
+                focusInput.style.display = 'none';
+                focusInput.value = '';
+                if (focusText.textContent) {
+                    focusDisplay.style.display = '';
+                } else {
+                    focusAdd.style.display = '';
+                }
+                e.stopPropagation();
+            }
+        });
+
+        focusInput.addEventListener('blur', function () {
+            if (focusInput.style.display !== 'none') {
+                focusInput.style.display = 'none';
+                if (focusText.textContent) {
+                    focusDisplay.style.display = '';
+                } else {
+                    focusAdd.style.display = '';
+                }
+            }
+        });
+
+        focusClear.addEventListener('click', function (e) {
+            e.stopPropagation();
+            focusText.textContent = '';
+            focusDisplay.style.display = 'none';
+            focusAdd.style.display = '';
+            try { localStorage.removeItem('glyphclock-focus'); } catch (err) {}
         });
     });
 })();
