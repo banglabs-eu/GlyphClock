@@ -12,6 +12,10 @@ Emoji sequence: 🥐→🦋→🌷→☂️→🌵→🎈→👓→⚓→🦚→
 
 Pure static site — vanilla JavaScript, HTML5, CSS3. No npm, no build step, no dependencies. Both JS files use IIFEs with `'use strict'`.
 
+## On Conversation Start
+
+Run `git pull origin main` at the start of every conversation to sync with remote before making changes.
+
 ## Local Development
 
 Open any HTML file directly in a browser, or use any static server (e.g. `python3 -m http.server`). No build step needed.
